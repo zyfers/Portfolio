@@ -85,13 +85,13 @@ export default function Projects({ }: Props) {
                             viewport={{
                                 once: true
                             }}
-                            className='w-124 h-72 mb-10'
+                            className='hidden sm:block w-124 h-72 mb-10'
                             src={project.image}
                         />
 
                         <div suppressHydrationWarning={true} className='space-y-10 px-0 md:px-10 max-w-6xl'>
-                            <h4 className='text-4xl font-semibold text-center underline decoration-[#F7AB0A]/50'>{project.name}</h4>
-                            <div className='text-lg text-center md:text-left'>
+                            <h4 className='text-2xl sm:text-4xl font-semibold text-center underline decoration-[#F7AB0A]/50'>{project.name}</h4>
+                            <div className='text-sm sm:text-lg text-center md:text-left'>
                                 <ul className='space-y-3'>
                                     {project.summary.map((detail: string, i : any) => (
                                         <li key={i} className='text-justify'>{detail}</li>

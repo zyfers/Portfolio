@@ -9,7 +9,7 @@ function ExperienceCard({ experienceData }: Props) {
   return (
     <article className='flex flex-col rounded-lg space-y-7 flex-shrink-0 items-center
         w-[500px] md:w-[600px] xl:w-[900px] snap-center bg-[#292929] p-10
-        hover:opacity-100 opacity-40 cursor-pointer transition-opacity duration-200 overflow-hidden'>
+        hover:opacity-100 opacity-40 cursor-pointer transition-opacity duration-200 min-[319px]:overflow-x-scroll sm:overflow-hidden'>
         <motion.img
             initial={{
                 y: -100,
@@ -25,12 +25,12 @@ function ExperienceCard({ experienceData }: Props) {
             transition={{
                 duration: 1.2
             }}
-            className='w-28 h-28 rounded-full xl:w-[150px] xl:h-[150px] object-cover object-top'
+            className='hidden sm:block sm:w-28 sm:h-28 rounded-full xl:w-[150px] xl:h-[150px] object-cover object-top'
             src={experienceData.imageUrl} 
         />
         <div className='px-0 md:px-10'>
-            <h4 className='text-xl font-light'>{experienceData.title}</h4>
-            <p className='font-bold text-lg mt-1'>{experienceData.company}</p>
+            <h4 className='max-[420px]:text-sm sm:text-xl font-light'>{experienceData.title}</h4>
+            <p className='font-bold text-lg mt-1 max-[420px]:w-[280px]'>{experienceData.company}</p>
             <div className='flex space-x-2 my-2'>
                 {experienceData.skills.map((skill: string, i: number) => (
                     <img
@@ -54,14 +54,12 @@ function ExperienceCard({ experienceData }: Props) {
             <p className='uppercase py-5 text-gray-300'>
                 {experienceData.workDuration}
             </p>
-            <div>
                 <div className=''>
-            <ul className='list-disc space-y-3 h-32 text-sm overflow-y-scroll scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]'>
+            <ul className='list-disc max-[420px]:w-full space-y-3 h-32 md:h-96 text-sm overflow-y-scroll scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]'>
                 {experienceData.summaryPoints.map((summary: string, i: number) => (
                     <li key={i}>{summary}</li>
                 ))}
             </ul>
-            </div>
             </div>
         </div>
     </article>
