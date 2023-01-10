@@ -63,7 +63,7 @@ function Header({ }: Props) {
                     transition={{
                         duration: 1.5
                     }}
-                    className='flex flex-row items-center text-gray-300 cursor-pointer'>
+                    className='flex p-3 flex-row items-center text-gray-300 cursor-pointer'>
                     <EnvelopeIcon className='bg-transparent text-gray-500 h-7 w-7 mr-2' />
                     <p className='uppercase hidden md:inline-flex text-sm text-gray-400'>
                         Contact
