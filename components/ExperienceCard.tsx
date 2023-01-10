@@ -14,20 +14,20 @@ function ExperienceCard({ experienceData }: Props) {
         snap-center bg-[#292929] p-5
         hover:opacity-100 opacity-40 cursor-pointer transition-opacity duration-200 min-[319px]:overflow-x-scroll sm:overflow-hidden'>
             <motion.img
-                initial={{
-                    y: -100,
-                    opacity: 0
-                }}
-                whileInView={{
-                    y: 0,
-                    opacity: 1
-                }}
-                viewport={{
-                    once: true
-                }}
-                transition={{
-                    duration: 1.2
-                }}
+                // initial={{
+                //     y: -100,
+                //     opacity: 0
+                // }}
+                // whileInView={{
+                //     y: 0,
+                //     opacity: 1
+                // }}
+                // viewport={{
+                //     once: true
+                // }}
+                // transition={{
+                //     duration: 1.2
+                // }}
                 className='w-14 h-14 sm:w-28 sm:h-28 rounded-full xl:w-[150px] xl:h-[150px] object-cover object-top'
                 src={experienceData.imageUrl}
             />
