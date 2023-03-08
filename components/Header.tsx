@@ -9,7 +9,7 @@ type Props = {}
 
 function Header({ }: Props) {
     return (
-        <header className='sticky top-0 p-5 flex items-start justify-between max-w-7xl mx-auto z-20 xl:items-center'>
+        <header className='sticky top-0 z-20 flex items-start justify-between p-5 mx-auto max-w-7xl xl:items-center'>
             <motion.div
                 initial={{
                     x: -500,
@@ -29,23 +29,28 @@ function Header({ }: Props) {
                 <SocialIcon
                     url="https://www.linkedin.com/in/himanshu-sharma-aa165a122/"
                     fgColor='gray'
-                    bgColor='transparent' />
+                    bgColor='transparent'
+                    className='hover:bg-gray-50 hover:rounded-md' />
                 <SocialIcon
                     url="https://www.facebook.com/mynameishimanshusharma/"
                     fgColor='gray'
-                    bgColor='transparent' />
+                    bgColor='transparent'
+                    className='hover:bg-gray-50 hover:rounded-md' />
                 <SocialIcon
                     url="https://www.instagram.com/himanshu.sharma2/"
                     fgColor='gray'
-                    bgColor='transparent' />
+                    bgColor='transparent'
+                    className='hover:bg-gray-50 hover:rounded-md' />
                 <SocialIcon
                     url="https://twitter.com/himashar01"
                     fgColor='gray'
-                    bgColor='transparent' />
+                    bgColor='transparent'
+                    className='hover:bg-gray-50 hover:rounded-md' />
                 <SocialIcon
                     url="https://github.com/zyfers"
                     fgColor='gray'
-                    bgColor='transparent' />
+                    bgColor='transparent'
+                    className='hover:bg-gray-50 hover:rounded-md' />
             </motion.div>
 
             <Link href="#contact">
@@ -63,9 +68,9 @@ function Header({ }: Props) {
                     transition={{
                         duration: 1.5
                     }}
-                    className='flex p-3 flex-row items-center text-gray-300 cursor-pointer'>
-                    <EnvelopeIcon className='bg-transparent text-gray-500 h-7 w-7 mr-2' />
-                    <p className='uppercase hidden md:inline-flex text-sm text-gray-400'>
+                    className='flex flex-row items-center p-3 text-gray-300 cursor-pointer hover:bg-gray-50 hover:rounded-md hover:text-black'>
+                    <EnvelopeIcon className='mr-2 text-gray-500 bg-transparent h-7 w-7' />
+                    <p className='hidden text-sm text-gray-400 uppercase md:inline-flex hover:text-black'>
                         Contact
                     </p>
                 </motion.div>

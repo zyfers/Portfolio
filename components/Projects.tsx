@@ -85,7 +85,7 @@ export default function Projects({ }: Props) {
                             viewport={{
                                 once: true
                             }}
-                            className='hidden w-auto h-[400px]:h-32 h-40 mb-10 sm:block md:w-auto md:h-72'
+                            className='hidden w-auto h-[800px]:h-32 h-40 object-scale-down mb-10 sm:block md:w-auto md:h-72'
                             src={project.image}
                         />
 

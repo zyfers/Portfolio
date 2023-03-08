@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 type Props = {
@@ -9,10 +9,17 @@ function ExperienceCard({ experienceData }: Props) {
 
     const [showModal, setShowModal] = React.useState(false);
 
+    useEffect(() => {
+        if (showModal) {
+            document.querySelector("body").style.overflow = 'hidden';
+        } else {
+            document.querySelector("body").style.overflow = 'visible';
+        }
+    }, [showModal])
+
     return (
-        <article className='flex flex-col rounded-lg space-y-7 flex-shrink-0 items-center
-        snap-center bg-[#292929] p-5
-        hover:opacity-100 opacity-40 cursor-pointer transition-opacity duration-200 min-[319px]:overflow-x-scroll sm:overflow-hidden'>
+        <article className='w-10/12 flex flex-col rounded-lg space-y-7 flex-shrink-0 items-center
+        snap-center bg-[#292929] pt-5'>
             <motion.img
                 // initial={{
                 //     y: -100,
@@ -31,30 +38,30 @@ function ExperienceCard({ experienceData }: Props) {
                 className='w-14 h-14 sm:w-28 sm:h-28 rounded-full xl:w-[150px] xl:h-[150px] object-cover object-top'
                 src={experienceData.imageUrl}
             />
-            <div className='px-0 md:px-10'>
+            <div className='pl-3'>
                 <h4 className='max-[420px]:text-sm sm:text-xl font-light'>{experienceData.title}</h4>
                 <p className='font-bold text-lg mt-1 max-[420px]:w-[280px]'>{experienceData.company}</p>
-                <div className='flex space-x-2 my-2'>
+                <div className='flex my-2 space-x-2'>
                     {experienceData.skills.map((skill: string, i: number) => (
                         <img
                             key={i}
-                            className='h-8 w-8 rounded-full'
+                            className='w-8 h-8 rounded-full'
                             src={skill} />
                     ))}
                     {/* <img
-                    className='h-10 w-10 rounded-full' 
+                    className='w-10 h-10 rounded-full' 
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png"/>
                 <img
-                    className='h-10 w-10 rounded-full' 
+                    className='w-10 h-10 rounded-full' 
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png"/>
                 <img
-                    className='h-10 w-10 rounded-full' 
+                    className='w-10 h-10 rounded-full' 
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png"/>
                 <img
-                    className='h-10 w-10 rounded-full' 
+                    className='w-10 h-10 rounded-full' 
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png"/>             */}
                 </div>
-                <p className='uppercase py-5 text-gray-300'>
+                <p className='py-5 text-gray-300 uppercase'>
                     {experienceData.workDuration}
                 </p>
                 <div className=''>
@@ -80,21 +87,21 @@ function ExperienceCard({ experienceData }: Props) {
                                     transition={{
                                         duration: 0.5
                                     }}
-                                    className="m-10 justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-gray-700"
+                                    className="fixed inset-0 z-50 flex items-center justify-center m-10 overflow-x-hidden overflow-y-auto border-white outline-gray-700"
                                 >
-                                    <div className="relative w-auto my-6 mx-auto max-w-3xl">
+                                    <div className="relative w-auto max-w-3xl mx-auto my-6">
                                         {/*content*/}
-                                        <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                                        <div className="relative flex flex-col w-full bg-white border-0 rounded-lg shadow-lg outline-none focus:outline-none">
                                             {/*header*/}
                                             <div className="flex bg-[#292929] items-start justify-between pb-0 pt-2 pl-3 border-b border-solid border-[#F7AB0A] rounded-t">
                                                 <h3 className="text-lg">
                                                     Summary
                                                 </h3>
                                                 <button
-                                                    className="pr-5 ml-auto bg-transparent border-0 float-right text-2xl leading-none outline-none focus:outline-none"
+                                                    className="float-right pr-5 ml-auto text-2xl leading-none bg-transparent border-0 outline-none focus:outline-none"
                                                     onClick={() => setShowModal(false)}
                                                 >
-                                                    <span className="text-white h-6 w-6 text-sm">
+                                                    <span className="w-6 h-6 text-sm text-white">
                                                         x
                                                     </span>
                                                 </button>
