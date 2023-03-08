@@ -11,9 +11,9 @@ function ExperienceCard({ experienceData }: Props) {
 
     useEffect(() => {
         if (showModal) {
-            document.querySelector("body").style.overflow = 'hidden';
+            document.querySelector("body")!.style.overflow = 'hidden';
         } else {
-            document.querySelector("body").style.overflow = 'visible';
+            document.querySelector("body")!.style.overflow = 'visible';
         }
     }, [showModal])
 
