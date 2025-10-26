@@ -1,9 +1,51 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 
 type Props = {}
 
 export default function Projects({ }: Props) {
+    const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
+    const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+    const goToPreviousProject = () => {
+        if (scrollContainerRef.current) {
+            const container = scrollContainerRef.current;
+            const scrollAmount = container.clientWidth;
+            container.scrollBy({
+                left: -scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+    };
+
+    const goToNextProject = () => {
+        if (scrollContainerRef.current) {
+            const container = scrollContainerRef.current;
+            const scrollAmount = container.clientWidth;
+            container.scrollBy({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+    };
+
+    // Update current project index based on scroll position
+    useEffect(() => {
+        const container = scrollContainerRef.current;
+        if (!container) return;
+
+        const handleScroll = () => {
+            const scrollLeft = container.scrollLeft;
+            const projectWidth = container.clientWidth;
+            const newIndex = Math.round(scrollLeft / projectWidth);
+            setCurrentProjectIndex(newIndex);
+        };
+
+        container.addEventListener('scroll', handleScroll);
+        return () => container.removeEventListener('scroll', handleScroll);
+    }, []);
+
     const projects = [
         {
             image: "/aigen.png",
@@ -63,13 +105,22 @@ export default function Projects({ }: Props) {
                 duration: 1.5
             }}
             className='relative z-0 flex flex-col items-center h-screen max-w-full mx-auto overflow-hidden text-left md:flex-row justify-evenly'>
-            <h3 className='absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl'>
+            <h3 className='absolute top-24 uppercase tracking-[15px] sm:tracking-[20px] text-gray-500 text-lg sm:text-2xl'>
                 Projects
             </h3>
 
-            <div className='relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20 scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]'>
+            {/* Previous Button */}
+            <button
+                onClick={goToPreviousProject}
+                className='hidden sm:block absolute left-4 sm:left-8 z-30 bg-[#F7AB0A]/20 hover:bg-[#F7AB0A]/40 rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110'
+                aria-label="Previous project"
+            >
+                <ChevronLeftIcon className='h-6 w-6 sm:h-8 sm:w-8 text-[#F7AB0A]' />
+            </button>
+
+            <div ref={scrollContainerRef} className='relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20 scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]'>
                 {projects.map((project, i) => (
-                    <div key={i} className='flex flex-col items-center justify-center flex-shrink-0 w-screen h-screen p-20 snap-center snap-y-5 md:p-44'>
+                    <div key={i} className='flex flex-col items-center justify-center flex-shrink-0 w-screen h-screen p-8 sm:p-16 md:p-20 lg:p-44 snap-center snap-y-5'>
                         <motion.img
                             initial={{
                                 y: -300,
@@ -85,7 +136,7 @@ export default function Projects({ }: Props) {
                             viewport={{
                                 once: true
                             }}
-                            className='hidden w-auto h-[800px]:h-32 h-40 object-scale-down mb-10 sm:block md:w-auto md:h-72'
+                            className='w-auto h-32 sm:h-40 md:h-48 lg:h-72 object-scale-down mb-6 sm:mb-10'
                             src={project.image}
                         />
 
@@ -100,6 +151,40 @@ export default function Projects({ }: Props) {
                             </div>
                         </div>
                     </div>
+                ))}
+            </div>
+
+            {/* Next Button */}
+            <button
+                onClick={goToNextProject}
+                className='hidden sm:block absolute right-4 sm:right-8 z-30 bg-[#F7AB0A]/20 hover:bg-[#F7AB0A]/40 rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110'
+                aria-label="Next project"
+            >
+                <ChevronRightIcon className='h-6 w-6 sm:h-8 sm:w-8 text-[#F7AB0A]' />
+            </button>
+
+            {/* Project Indicators */}
+            <div className='absolute bottom-8 sm:bottom-12 left-1/2 transform -translate-x-1/2 flex space-x-2 z-30'>
+                {projects.map((_, index) => (
+                    <button
+                        key={index}
+                        onClick={() => {
+                            if (scrollContainerRef.current) {
+                                const container = scrollContainerRef.current;
+                                const scrollAmount = container.clientWidth * index;
+                                container.scrollTo({
+                                    left: scrollAmount,
+                                    behavior: 'smooth'
+                                });
+                            }
+                        }}
+                        className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
+                            index === currentProjectIndex 
+                                ? 'bg-[#F7AB0A] scale-125' 
+                                : 'bg-gray-500 hover:bg-gray-400'
+                        }`}
+                        aria-label={`Go to project ${index + 1}`}
+                    />
                 ))}
             </div>
 

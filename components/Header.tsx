@@ -9,7 +9,7 @@ type Props = {}
 
 function Header({ }: Props) {
     return (
-        <header className='sticky top-0 z-20 flex items-start justify-between p-5 mx-auto max-w-7xl xl:items-center'>
+        <header className='sticky top-0 z-20 flex items-start justify-between p-3 sm:p-5 mx-auto max-w-7xl xl:items-center'>
             <motion.div
                 initial={{
                     x: -500,
@@ -24,10 +24,10 @@ function Header({ }: Props) {
                 transition={{
                     duration: 1.5
                 }}
-                className='flex flex-row items-center'>
+                className='flex flex-row items-center gap-1 sm:gap-2'>
 
                 <SocialIcon
-                    url="https://www.linkedin.com/in/himanshu-sharma-aa165a122/"
+                    url="https://www.linkedin.com/in/himashar/"
                     fgColor='gray'
                     bgColor='transparent'
                     className='hover:bg-gray-50 hover:rounded-md' />
@@ -68,7 +68,7 @@ function Header({ }: Props) {
                     transition={{
                         duration: 1.5
                     }}
-                    className='flex flex-row items-center p-3 text-gray-300 cursor-pointer hover:bg-gray-50 hover:rounded-md hover:text-black'>
+                    className='flex flex-row items-center p-2 sm:p-3 text-gray-300 cursor-pointer hover:bg-gray-50 hover:rounded-md hover:text-black'>
                     <EnvelopeIcon className='mr-2 text-gray-500 bg-transparent h-7 w-7' />
                     <p className='hidden text-sm text-gray-400 uppercase md:inline-flex hover:text-black'>
                         Contact
