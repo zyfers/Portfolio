@@ -13,7 +13,7 @@ function Hero({ }: Props) {
         words: [
             "Hi, I am Himanshu Sharma",
             "Full-Stack Developer",
-            "Machine Learning Enthusiast"],
+            "GenAI Product Builder"],
         loop: true,
         delaySpeed: 2000
     })
